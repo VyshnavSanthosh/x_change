@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+</head>
+<body>
+    <form enctype='multipart/form-data' method="post" class='form'>
+        {% csrf_token %}
+        
+        <h1 class="form-title">PRODUCT DETAILS</h1>
+
+        <div class="form-section">
+            
+            <label>Product Name <span class="required">*</span></label>
+            <input type="text" name="name" maxlength="100" required>
+
+
+            <label>Price (₹) <span class="required">*</span></label>
+            <input type="number" name="price" step="0.01" required>
+
+            <label>Description <span class="required">*</span></label>
+            <textarea name="description" rows="4" required></textarea>
+
+            <label>Months Used <span class="required">*</span></label>
+            <input type="number" name="months_used" min="0" required>
+        </div>
+
+
+        <div class="form-section">
+            <h2>PRODUCT IMAGE <span class="required">*</span></h2>
+            <div class="photo-grid">
+                <div class="photo-cell">
+                    <input type="file" name="photos" multiple accept="image/*" style="display: none;" id="photoUpload">
+                    <button type="button" onclick="document.getElementById('photoUpload').click()">Add Photo</button>
+                </div>
+            </div>
+        </div>
+        <div class="button-group">
+
+            <button type="submit" class="btn btn-warning">SUBMIT</button>
+        </div>
+    </form>
+</body>
+</html>
+{% endblock %}
