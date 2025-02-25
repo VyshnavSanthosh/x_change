@@ -1,0 +1,40 @@
+{% extends "base.html" %}
+{% load static %}
+{% block container %}
+<div class="account-page">
+    <div class="container">
+        <div class="row">
+            <div class="col-2">
+                <img src="{% static 'images/image1 copy.png' %}" width="100%">
+            </div>
+            <div class="col-2">
+                <div class="form-container">
+                    <div class="form-btn">
+                        <a href="{% url 'login' %}"><span onclick="login()">Login</span></a>
+                        <a href="{% url 'signup' %}"><span onclick="register()">Register</span></a>
+                        <hr id="Indicator">
+                    </div>
+                    <form id="RegForm" method="POST" action="{% url 'signup' %}">
+                        {% csrf_token %}
+                        {% if form.errors %}
+                            <div class="alert alert-danger">
+                                {% for field, errors in form.errors.items %}
+                                    {% for error in errors %}
+                                        <p>{{ error }}</p>
+                                    {% endfor %}
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                        <input type="text" name="username" placeholder="Username" required>
+                        <input type="email" name="email" placeholder="Email" required>
+                        <input type="password" name="password1" placeholder="Password" required>
+                        <input type="password" name="password2" placeholder="Confirm Password" required>
+                        <button type="submit" class="btn">Register</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Include JavaScript here -->
+{% endblock %}

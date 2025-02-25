@@ -18,10 +18,12 @@ def sell_page(request):
         form = SellProduct(request.POST, request.FILES)
         if form.is_valid():
             sell = form.save(commit=False)
-            sell.user =  request.user
+            sell.user = request.user
             sell.save()
-            return redirect('index')
+            print("successfully sold", sell.user)
+            return redirect('home')
+        else:
+            print("Form errors:", form.errors)  # Print any form validation errors
     else:
         form = SellProduct()
-    return render(request,'sell_page.html', {'form':form})
-
+    return render(request, 'sell_page.html', {'form': form})

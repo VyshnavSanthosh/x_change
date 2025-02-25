@@ -1,3 +1,4 @@
+from django.contrib import messages
 from django.shortcuts import render, redirect
 from .forms import LoginForm, SignUpForm
 from django.contrib.auth import login, authenticate, logout
@@ -7,9 +8,10 @@ from django.contrib.auth import login, authenticate, logout
 def signupView(request):
     if request.method ==  'POST':
         form = SignUpForm(request.POST or None)
-        if form.isvalid():
+        if form.is_valid():
             user = form.save()
             login(request, user)
+            messages.success(request, "You have been successfully registered.")
             return redirect('home')
     else:
         form = SignUpForm()
@@ -19,8 +21,9 @@ def loginView(request):
     if request.method == 'POST':
         form = LoginForm(request.POST or None)
         if form.is_valid():
-            user = authenticate(username=form.cleaned_data['email'] , password=form.cleaned_data('password'))
+            user = authenticate(username=form.cleaned_data['username'] , password=form.cleaned_data['password'])
             login(request, user)
+            messages.success(request, "You have been successfully logged in.")
             return redirect('home')
     else:
         form = LoginForm()

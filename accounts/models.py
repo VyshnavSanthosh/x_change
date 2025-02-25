@@ -1,8 +1,9 @@
 from django.db import models
+from django.contrib.auth.models import User
 
-# Create your models here.
-from django.contrib.auth.models import AbstractUser
+class UserProfile(models.Model):
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    # Add any additional fields here, e.g., bio, profile picture, etc.
 
-class User(AbstractUser):
-    # Add any additional fields here
-    pass
+    def __str__(self):
+        return self.user.username

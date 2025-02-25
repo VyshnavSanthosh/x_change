@@ -2,7 +2,7 @@
 
 <div class="navbar">
     <div class="logo">
-        <a href="{% url "index" %} "><img src="{% static 'images/logo.png' %}" alt="logo" ></a>
+        <a href="{% url "home" %} "><img src="{% static 'images/logo.png' %}" alt="logo" ></a>
     </div>
     <nav>
         <ul id="MenuItems">
@@ -11,7 +11,12 @@
             <li><a href=" {% url "sell" %} ">Sell</a></li>
             <li><a href="">About</a></li>
             <li><a href="">Contact</a></li>
-            <li><a href="account.html">Account</a></li>
+            {% if user.is_authenticated %}
+            <li>{{user.username}} </li>
+            <li><a href="{% url "logout" %}">Logout</a></li>
+            {% else %}
+            <li><a href="{% url "signup" %}">Account</a></li>
+            {% endif %}
         </ul>
     </nav>
     <a href="cart.html"><img src="{% static 'images/cart.png' %}" width="30px" height="30px"></a>

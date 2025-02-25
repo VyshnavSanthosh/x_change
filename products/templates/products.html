@@ -19,13 +19,7 @@
         <div class="col-4">
             <a href="{% url "product_detail" product.pk  %}"><img src="{{ product.image.url }}"></a>
             <h4>{{ product.name }}</h4>
-            <div class="rating">
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star"></i>
-                <i class="fa fa-star-o"></i>
-            </div>
+            <p>Month's Used: {{ product.months_used }}</p>
             <p>{{ product.price }}</p>
         </div>
         {% endfor %}

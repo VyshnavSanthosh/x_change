@@ -8,7 +8,7 @@ from .models import Product
 class SellProduct(forms.ModelForm):
     class  Meta:
         model = Product
-        fields = ['name', 'image', 'description', 'months_used', 'price']
+        fields = ['name', 'price', 'description', 'months_used', 'image']
 
 
 class UserRegistrationForm(UserCreationForm):
