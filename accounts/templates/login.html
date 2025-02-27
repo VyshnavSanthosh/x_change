@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% load static %}
+{% load socialaccount %}
 {% block container %}
     <!-- Account Page -->
     <div class="account-page">
@@ -11,12 +12,13 @@
                 <div class="col-2">
                     <div class="form-container">
                         <div class="form-btn">
+                            <a href="{% url "signup" %}">
+                                <span onclick="register()">Register</span>
+                                </a>
                             <a href="{% url "login" %}">
                             <span onclick="login()">Login</span>
                             </a>
-                            <a href="{% url "signup" %}">
-                            <span onclick="register()">Register</span>
-                            </a>
+                            
                             <hr id="Indicator">
                         </div>
 
@@ -31,10 +33,18 @@
                                     {% endfor %}
                                 </div>
                             {% endif %}
-                            <input type="text" placeholder="Username">
-                            <input type="password" placeholder="Password">
-                            <button type="submit" class="btn">Register</button>
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="password" name="password" placeholder="Password">
+                            <button type="submit" class="btn">Login</button>
+                        
+                            <!-- Move Google login button right below the login button -->
+
+                            <p>Or</p>
+                            <div class="google-login">
+                                <a href="{% provider_login_url 'google' %}" class="btn google-btn">Login with Google</a>
+                            </div>
                         </form>
+
                     </div>
                 </div>
             </div>
@@ -42,36 +52,4 @@
     </div>
 
 {% endblock %}
-    <!-- javascript -->
 
-    <script>
-        var MenuItems = document.getElementById("MenuItems");
-        MenuItems.style.maxHeight = "0px";
-        function menutoggle() {
-            if (MenuItems.style.maxHeight == "0px") {
-                MenuItems.style.maxHeight = "200px"
-            }
-            else {
-                MenuItems.style.maxHeight = "0px"
-            }
-        }
-    </script>
-
-    <!-- Toggle Form -->
-    <script>
-        var LoginForm = document.getElementById("LoginForm");
-        var RegForm = document.getElementById("RegForm");
-        var Indicator = document.getElementById("Indicator");
-        function register() {
-            RegForm.style.transform = "translatex(0px)";
-            LoginForm.style.transform = "translatex(0px)";
-            Indicator.style.transform = "translateX(100px)";
-
-        }
-        function login() {
-            RegForm.style.transform = "translatex(300px)";
-            LoginForm.style.transform = "translatex(300px)";
-            Indicator.style.transform = "translate(0px)";
-
-        }
-    </script>

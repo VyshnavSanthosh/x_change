@@ -113,6 +113,8 @@ p{
     line-height: 1.2;
     
 }
+
+
 .col-2{
     flex-basis: 50%;
     min-width: 300px;
@@ -141,16 +143,36 @@ p{
 } */
 .btn{
     display: inline-block;
-    background: #F9B800;
+    background: #23aeff;
     color: white;
     padding: 0.75rem 2rem; /* Changed from 8px 30px */
     margin: 2rem 0; /* Changed from 30px */
     border-radius: 2rem;
     transition: background 0.5s;
     font-size: 1rem;
+    font-weight: bold;
 }
 .btn:hover{
-    background: #563434;
+    background: #95d0f1;
+}
+
+.google-login {
+    margin-top: 10px;
+    text-align: center;
+}
+
+.google-btn {
+    display: block;
+    width: 100%;
+    background-color: #ee3a3a; /* Google's red color */
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 2rem;
+    text-decoration: none;
+    font-weight: bold;
+}
+.google-btn:hover {
+    background-color: #da6565;
 }
 .header{
     background: radial-gradient(#fff,#F9B80030);
@@ -467,7 +489,8 @@ th:last-child{
 /* Account page */
 .account-page{
     padding: 50px 0;
-    background: radial-gradient(#fff, #ffd6d6);
+
+    background: radial-gradient(#fff, #F9B80030);
 }
 .form-container{
     background: #fff;
