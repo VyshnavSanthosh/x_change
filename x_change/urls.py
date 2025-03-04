@@ -28,4 +28,5 @@ urlpatterns = [
     path('products/',include('products.urls')),
     path('account/',include('accounts.urls')),
     path('accounts/', include('allauth.urls')),
+    path('chat/',include('chat.urls')),
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
